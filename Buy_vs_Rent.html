@@ -11827,7 +11827,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[196]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">math</span>
@@ -12035,9 +12035,10 @@ SUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The projected percent of the home you own is $$D + (1 - W)(1 - D),$$</p>
-<p>where $D$ is the percent down payment, and $W$ is the percent of the loan still owed.</p>
-<p>Also, let $I_n$ be the interest corresponding to loan payment $n$, with $P_n$ as the remaining balance on the loan after payment $n$.</p>
+<p>Let $W$ represent the percent of the loan still owed.</p>
+<p>The projected percent of the home you own is the percent down payment $D$ plus the percent of the home loan you have paid off $(1 - W)$ times the percent of the home value the initial loan covered $(1 - D)$. The projected percent of the home you own is then</p>
+<p>$$D + (1 - W)(1 - D).$$</p>
+<p>Also, let $I_n$ be the interest corresponding to loan payment $n$, with $P_n$ as the remaining balance on the loan after payment $n$. The amount of money you paid towards interest in you last monthly payment is then the monthly payment $d$ minus the decrease in the amount you owe on the loan $P_{n-1} - P_n$.</p>
 <p>$$I_n = d - (P_{n-1} - P_n)$$</p>
 <p>If $D$ is the percent down-payment for the home, $P_H$ is the price for the home, and $P_0$ is the initial loan amount, then $P_H = P_0 + D P_H$. Solving for $P_H$, $P_H = \frac{P_0}{1 - D}.$</p>
 <p>The percent of the home purchase cost that is paid in interest for loan payment $n$ is then</p>
@@ -12050,7 +12051,7 @@ SUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[211]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">avg_inflation</span> <span class="o">=</span> <span class="o">.</span><span class="mo">0322</span>  <span class="c1"># geometric mean</span>
@@ -12082,7 +12083,8 @@ SUVORK5CYII=
     <span class="c1"># Closure</span>
     <span class="k">def</span> <span class="nf">cost_by_yrs</span><span class="p">(</span><span class="n">n_years</span><span class="p">):</span>
                 
-        <span class="k">def</span> <span class="nf">pct_own</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>  <span class="c1"># by month as % of home price</span>
+        <span class="k">def</span> <span class="nf">pct_own</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>  
+            <span class="c1"># The percent of the home you own by month x as % of the initial home price</span>
             <span class="k">return</span> <span class="n">down_pmt_pct</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">pct_owed</span><span class="p">(</span><span class="n">loan_term</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">interest_rt</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">down_pmt_pct</span><span class="p">)</span>
         
         <span class="n">n_months</span> <span class="o">=</span> <span class="mi">12</span> <span class="o">*</span> <span class="n">n_years</span>
@@ -12294,7 +12296,7 @@ eQAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[205]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># years you intend to keep your home</span>
@@ -12312,7 +12314,7 @@ eQAAAABJRU5ErkJggg==
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[205]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -12329,7 +12331,7 @@ eQAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[206]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">pct</span> <span class="o">*</span> <span class="mi">200000</span> <span class="o">/</span> <span class="mi">12</span>
@@ -12345,7 +12347,7 @@ eQAAAABJRU5ErkJggg==
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[206]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -12371,7 +12373,7 @@ eQAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[209]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">home_price</span> <span class="o">=</span> <span class="mi">200000</span>
@@ -12559,16 +12561,17 @@ https://www.quora.com/If-I-purchase-a-house-for-300000-how-much-can-I-rent-it-ou
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[208]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">typical_wedding_cost</span> <span class="o">=</span> <span class="mi">20000</span>
 <span class="n">typical_ring_cost</span> <span class="o">=</span> <span class="mi">3500</span>
+<span class="n">total_cost</span> <span class="o">=</span> <span class="n">typical_ring_cost</span> <span class="o">+</span> <span class="n">typical_wedding_cost</span>
 <span class="n">budget_wedding_cost</span> <span class="o">=</span> <span class="mi">2000</span>
 <span class="n">budget_ring_cost</span> <span class="o">=</span> <span class="mi">350</span>
 <span class="n">avg_spy</span> <span class="o">=</span> <span class="o">.</span><span class="mi">098</span>
-<span class="n">savings</span> <span class="o">=</span> <span class="n">typical_wedding_cost</span> <span class="o">+</span> <span class="n">typical_ring_cost</span> <span class="o">-</span> <span class="n">budget_wedding_cost</span> <span class="o">-</span> <span class="n">budget_ring_cost</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">$&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">savings</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">avg_spy</span> <span class="o">-</span> <span class="n">avg_inflation</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; adjusted for inflation&quot;</span><span class="p">)</span>
+<span class="n">savings</span> <span class="o">=</span> <span class="n">total_cost</span> <span class="o">-</span> <span class="n">budget_wedding_cost</span> <span class="o">-</span> <span class="n">budget_ring_cost</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">The amount of money you&#39;ll have by investing the remaining $</span><span class="si">%d</span><span class="s2"> from the original $</span><span class="si">%d</span><span class="s2"> of wedding costs in 5 years will provide you with $&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">savings</span><span class="p">,</span> <span class="n">total_cost</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">savings</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">avg_spy</span> <span class="o">-</span> <span class="n">avg_inflation</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; adjusted for inflation&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12586,7 +12589,7 @@ https://www.quora.com/If-I-purchase-a-house-for-300000-how-much-can-I-rent-it-ou
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-$29389.57 adjusted for inflation
+The amount of money you&#39;ll have by investing the remaining $21150 from the original $23500 of wedding costs in 5 years will provide you with $29389.57 adjusted for inflation
 </pre>
 </div>
 </div>
